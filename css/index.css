@@ -1,0 +1,23 @@
+.body {
+    display: flex;
+    font-family: 'Saira', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title {
+    font-size: 10vh;
+}
+
+#play {
+    font-size: 6vh;
+    text-decoration: none;
+    color: rgb(61, 61, 61);
+}
+
+#create {
+    font-size: 6vh;
+    text-decoration: none;
+    color: rgb(61, 61, 61);
+}
