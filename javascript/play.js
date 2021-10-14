@@ -2,7 +2,7 @@ var btnMap = {}
 
 tool = "gw"
 
-playerPosion = [4 , 9]
+var playerPosion = [4 , 9]
 
 /*
 b = blank
@@ -75,6 +75,9 @@ async function fileToJSON(file) {
 
 
 function loadMap() {
+    playerPosion = [4 , 9];
+    document.getElementById("playerBtn").style.left = playerPosion[0]*4 + "vh";
+    document.getElementById("playerBtn").style.top = playerPosion[1]*4 + "vh";
     console.log(document.getElementById("myfile").value);
     if (document.getElementById("myfile").value != ""){
         console.log("loading from file");
@@ -85,8 +88,10 @@ function loadMap() {
     }
 for (let step1 = 0; step1 < 30; step1++) {
     for (let step2 = 0; step2 < 20; step2++) {
+        if (step1 == 27 && step2 == 9) {
+        }else{
         if (btnMap[step1][step2] == "grw"){
-            if (step1 != 27 && step2 != 9) {
+            
             btnId = document.getElementById("square-"+step1+"-"+step2);
             btnId.style.backgroundColor = "Lightgrey";
             btnId.style.border = "3px solid rgb(120,120,120)";
@@ -140,6 +145,8 @@ document.addEventListener('keydown', (event) => {
                 console.log(playerPosion);
 
         }
+    }else if (name == "r") {
+        loadMap();
     }
 
   }, false);
