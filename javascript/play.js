@@ -62,6 +62,18 @@ for (let step1 = 0; step1 < 30; step1++) {
 }
 console.log(btnMap)
 
+
+async function fileToJSON(file) {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader()
+      fileReader.onload = event => resolve(JSON.parse(event.target.result))
+      fileReader.onerror = error => reject(error)
+      fileReader.readAsText(file)
+    })
+}
+
+
+
 function loadMap() {
     console.log(document.getElementById("myfile").value);
     if (document.getElementById("myfile").value != ""){
@@ -74,12 +86,7 @@ function loadMap() {
 for (let step1 = 0; step1 < 30; step1++) {
     for (let step2 = 0; step2 < 20; step2++) {
         if (btnMap[step1][step2] == "grw"){
-            if (step1 == 27 && step2 == 9) {
-                return
-            }
-            if (step1 == 4 && step2 == 9) {
-                return
-            }
+            if (step1 != 27 && step2 != 9) {
             btnId = document.getElementById("square-"+step1+"-"+step2);
             btnId.style.backgroundColor = "Lightgrey";
             btnId.style.border = "3px solid rgb(120,120,120)";
@@ -90,6 +97,8 @@ for (let step1 = 0; step1 < 30; step1++) {
             btnId.style.border = "1px solid grey";
             btnId.style.borderRadius = "0px";
         }
+
+    }
 
     }
 }
@@ -135,4 +144,20 @@ document.addEventListener('keydown', (event) => {
 
   }, false);
 
-  
+  (function(){
+    
+    function onChange(event) {
+        var reader = new FileReader();
+        reader.onload = onReaderLoad;
+        reader.readAsText(event.target.files[0]);
+    }
+
+    function onReaderLoad(event){
+        console.log(event.target.result);
+        btnMap = JSON.parse(event.target.result);
+        
+    }
+
+    document.getElementById('myfile').addEventListener('change', onChange);
+
+}());
