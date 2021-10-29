@@ -202,8 +202,8 @@ document.addEventListener('keydown', (event) => {
   }, false);
 
 function copy() {
-    navigator.clipboard.writeText(JSON.stringify(btnMap, null, 2));
-    console.log("copied: "+JSON.stringify(btnMap, null, 2));
+    navigator.clipboard.writeText(JSON.stringify(btnMap, null, 3));
+    console.log("copied: "+JSON.stringify(btnMap, null, 3));
 }
 
 
@@ -215,7 +215,7 @@ function downloadFile() {
             if (fileName == null){
                 return
             }
-    download(JSON.stringify(btnMap, null, 2), fileName.replace(".json", "")+'.json','application/json');
+    download(JSON.stringify(btnMap, null, 3), fileName.replace(".json", "")+'.json','application/json');
 }
 function download(text, name, type) {
         var file = new Blob([text], {type: type});

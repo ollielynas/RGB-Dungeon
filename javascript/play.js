@@ -95,6 +95,7 @@ function loadMap() {
     for (let step2 = 0; step2 < 20; step2++) {
       if (step1 == 27 && step2 == 9) {
       } else {
+        document.getElementById("square-" + step1 + "-" + step2).innerHTML = "";
         if (btnMap[step1][step2] == "grw") {
           btnId = document.getElementById("square-" + step1 + "-" + step2);
           btnId.style.backgroundColor = "Lightgrey";
@@ -105,6 +106,7 @@ function loadMap() {
           btnId.style.backgroundColor = "white";
           btnId.style.border = "1px solid grey";
           btnId.style.borderRadius = "0px";
+          btnId.style.transform = "scale(1)";
         } else if (btnMap[step1][step2] == "grg") {
           btnId = document.getElementById("square-" + step1 + "-" + step2);
           btnId.style.backgroundColor = "Lightgrey";
@@ -232,6 +234,9 @@ document.addEventListener(
     }
 
     if (name == "w" || name == "a" || name == "s" || name == "d") {
+        if (playerPosion[0] == 27 && playerPosion[1] == 9) {
+            win();
+        }
       if (btnMap[playerPosion[0]][playerPosion[1]] == "grg") {
         btnMap[playerPosion[0]][playerPosion[1]] = "grw";
         btnId = document.getElementById(
@@ -453,3 +458,29 @@ function update() {
 
   document.getElementById("myfile").addEventListener("change", onChange);
 })();
+
+
+function win() {
+    var map = document.getElementById("pasteMap").value;
+    if (map == "") {
+        for (let step1 = 0; step1 < 30; step1++) {
+            for (let step2 = 0; step2 < 20; step2++) {
+                btnMap[step1][step2] = "b";
+            }}
+            map = btnMap;
+    }
+    var request = new XMLHttpRequest();
+    request.open("GET","maps/winMap.json", false);
+    request.send(null);
+    console.log(request.responseText);
+    var winMap = JSON.parse(request.responseText);
+    document.getElementById("pasteMap").value = JSON.stringify(winMap);
+    loadMap();
+    document.getElementById("pasteMap").value = map;
+    console.log.sleep(2000, 'sleeeeep');
+    loadMap();
+}
+
+Function.prototype.sleep = function(delay, ...args) {
+    setTimeout(() => this(...args), delay)
+}
