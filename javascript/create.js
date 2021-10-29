@@ -201,13 +201,21 @@ document.addEventListener('keydown', (event) => {
     
   }, false);
 
+function copy() {
+    navigator.clipboard.writeText(JSON.stringify(btnMap, null, 2));
+    console.log("copied: "+JSON.stringify(btnMap, null, 2));
+}
+
+
+
+
 function downloadFile() {
 
     let fileName = prompt("File name", "untitled");
             if (fileName == null){
                 return
             }
-    download(JSON.stringify(btnMap), fileName.replace(".json", "")+'.json','application/json');
+    download(JSON.stringify(btnMap, null, 2), fileName.replace(".json", "")+'.json','application/json');
 }
 function download(text, name, type) {
         var file = new Blob([text], {type: type});
