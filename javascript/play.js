@@ -472,7 +472,6 @@ function win() {
     loadMap();
     console.log.sleep(2000, 'sleeeeep');
     document.getElementById("pasteMap").value = map;
-    loadMap();
 }
 
 Function.prototype.sleep = function(delay, ...args) {
