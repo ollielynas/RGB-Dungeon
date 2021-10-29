@@ -435,5 +435,4 @@ function update() {
 
 }());
 
-var ogMap = {}
 

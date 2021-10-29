@@ -180,3 +180,14 @@
     background-color: rgb(56, 56, 56);
 }
 
+#download {
+
+    position: absolute;
+    left: 1vw;
+    bottom: 5vh;
+}
+#copy {
+    position: absolute;
+    left: 1vw;
+    bottom: 8vh;
+}

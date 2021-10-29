@@ -4,52 +4,65 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="create">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/create.css">
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Saira:wght@200&display=swap" rel="stylesheet">
-    </head>
-    <body class = "body">
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div id = "toolSelector">
-        <p>gates</p>
-        <div id = "options">
-        <button id = "grg"></button>
-        <button id = "rg"></button>
-        <button id = "gg"></button>
-        <button id = "bg"></button>
-        </div>
-        <p>Butttons</p>
-        <div id = "options">
-        <button id = "rb">0</button>
-        <button id = "gb">0</button>
-        <button id = "bb">0</button>
-        </div>
-        <p>Lazers</p>
-        <div id = "options">
-        <button id = "nlzr"></button>
-        <button id = "elzr"></button>
-        <button id = "slzr"></button>
-        <button id = "wlzr"></button>
-        </div>
-        <p>Other</p>
-        <div id = "options">
-        <button id = "grw"></button>
-        <button id = "rb"></button>
-        <button id = "gb"></button>
-        <button id = "bb"></button>
-        </div>
-        </div>
-        <div id = "map"></div>
-        
-        <script src="javascript/create.js" async defer></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="create" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/create.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira:wght@200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="body">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="toolSelector">
+      <p>gates</p>
+      <div id="options">
+        <button id="grg"></button>
+        <button id="rg"></button>
+        <button id="gg"></button>
+        <button id="bg"></button>
+      </div>
+      <p>Butttons</p>
+      <div id="options">
+        <button id="rb">0</button>
+        <button id="gb">0</button>
+        <button id="bb">0</button>
+      </div>
+      <p>Lazers</p>
+      <div id="options">
+        <button id="nlzr"></button>
+        <button id="elzr"></button>
+        <button id="slzr"></button>
+        <button id="wlzr"></button>
+      </div>
+      <p>Other</p>
+      <div id="options">
+        <button id="grw"></button>
+        <button id="rb"></button>
+        <button id="gb"></button>
+        <button id="bb"></button>
+      </div>
+      <a id="download" onclick="downloadFile()">
+        download
+      </a>
+      <a id="copy" onclick="copy()">
+        copy to clipboard
+      </a>
+    </div>
+    
+    <div id="map"></div>
+
+    <script src="javascript/create.js" async defer></script>
+  </body>
 </html>
