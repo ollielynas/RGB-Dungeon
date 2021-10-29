@@ -63,6 +63,7 @@ console.log(btnMap)
 
 window.onmousedown = e => {
     var btnId = (e.target.id);
+    console.log(btnId)
     var btnList = btnId.split("-")
     if (btnList[1] == 27 && btnList[2] == 9) {
         return
@@ -72,6 +73,8 @@ window.onmousedown = e => {
     }
     if (btnList[0] == "square"){
         console.log(btnList);
+        document.getElementById(btnId).style.transform = "scale(1)";
+        document.getElementById(btnId).innerHTML = "";
         if (btnMap[btnList[1]][btnList[2]] != "b"){
             document.getElementById(btnId).style.backgroundColor = "white";
             document.getElementById(btnId).style.border = "1px solid grey";
@@ -83,7 +86,107 @@ window.onmousedown = e => {
             document.getElementById(btnId).style.borderRadius = "10px";
             btnMap[btnList[1]][btnList[2]] = "grw";
 
+        }else if (tool == "grg"){
+            document.getElementById(btnId).style.backgroundColor = "Lightgrey";
+            document.getElementById(btnId).style.border = "3px solid rgb(120,120,120)";
+            document.getElementById(btnId).style.borderRadius = "10px";
+            document.getElementById(btnId).style.transform = "scale(0.5)";
+            btnMap[btnList[1]][btnList[2]] = "grg";
+        }else if (tool == "rg"){
+            document.getElementById(btnId).style.backgroundColor = "rgb(214, 65, 65)";
+            document.getElementById(btnId).style.border = "3px solid Darkred";
+            document.getElementById(btnId).style.borderRadius = "10px";
+            document.getElementById(btnId).style.transform = "scale(1)";
+            btnMap[btnList[1]][btnList[2]] = "rg";
+        }else if (tool == "gg"){
+            document.getElementById(btnId).style.backgroundColor = "lightgreen";
+            document.getElementById(btnId).style.border = "3px solid darkgreen";
+            document.getElementById(btnId).style.borderRadius = "10px";
+            document.getElementById(btnId).style.transform = "scale(1)";
+            btnMap[btnList[1]][btnList[2]] = "gg";
+        }else if (tool == "bg"){
+            document.getElementById(btnId).style.backgroundColor = "lightblue";
+            document.getElementById(btnId).style.border = "3px solid darkblue";
+            document.getElementById(btnId).style.borderRadius = "10px";
+            document.getElementById(btnId).style.transform = "scale(1)";
+            btnMap[btnList[1]][btnList[2]] = "bg";
+        }else if (tool == "rb"){
+            let btnValue = prompt("Button wait timer", "1");
+            while (true) {
+            if (btnValue == null){
+                return
+            }
+            if (parseInt(btnValue) == "NaN"){
+                btnValue = prompt("Invalid value", "1");
+            }else{
+                break
+            }
         }
+            document.getElementById(btnId).style.backgroundColor = "rgb(214, 65, 65)";
+            document.getElementById(btnId).style.border = "3px solid Darkred";
+            document.getElementById(btnId).style.borderRadius = "50%";
+            document.getElementById(btnId).style.fontSize = "2vh";
+            document.getElementById(btnId).style.color = "black";
+            document.getElementById(btnId).style.transform = "scale(1)";
+            document.getElementById(btnId).innerHTML = btnValue;
+            btnMap[btnList[1]][btnList[2]] = "rb-"+btnValue;
+        }else if (tool == "gb"){
+            let btnValue = prompt("Button wait timer", "0");
+            while (true) {
+            if (btnValue == null){
+                return
+            }
+            if (parseInt(btnValue) == "NaN"){
+                btnValue = prompt("Invalid value", "0");
+            }else{
+                break
+            }
+        }
+            document.getElementById(btnId).style.backgroundColor = "lightgreen";
+            document.getElementById(btnId).style.border = "3px solid darkgreen";
+            document.getElementById(btnId).style.borderRadius = "50%";
+            document.getElementById(btnId).style.fontSize = "2vh";
+            document.getElementById(btnId).style.color = "black";
+            document.getElementById(btnId).style.transform = "scale(1)";
+            document.getElementById(btnId).innerHTML = btnValue;
+            btnMap[btnList[1]][btnList[2]] = "gb-"+btnValue;
+        }else if (tool == "bb"){
+            let btnValue = prompt("Button wait timer", "0");
+            while (true) {
+            if (btnValue == null){
+                return
+            }
+            if (parseInt(btnValue) == "NaN"){
+                btnValue = prompt("Invalid value", "0");
+            }else{
+                break
+            }
+        }
+            document.getElementById(btnId).style.backgroundColor = "lightblue";
+            document.getElementById(btnId).style.border = "3px solid darkblue";
+            document.getElementById(btnId).style.borderRadius = "50%";
+            document.getElementById(btnId).style.fontSize = "2vh";
+            document.getElementById(btnId).style.color = "black";
+            document.getElementById(btnId).style.transform = "scale(1)";
+            document.getElementById(btnId).innerHTML = btnValue;
+            btnMap[btnList[1]][btnList[2]] = "bb-"+btnValue;
+        }
+    }if (btnId == "grg"){
+        tool = "grg";
+    }if (btnId == "grw"){
+        tool = "grw";
+    }if (btnId == "rg"){
+        tool = "rg";
+    }if (btnId == "gg"){
+        tool = "gg";
+    }if (btnId == "bg"){
+        tool = "bg";
+    }if (btnId == "rb"){
+        tool = "rb";
+    }if (btnId == "gb"){
+        tool = "gb";
+    }if (btnId == "bb"){
+        tool = "bb";
     }
 }
 
