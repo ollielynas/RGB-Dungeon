@@ -462,13 +462,7 @@ function update() {
 
 function win() {
     var map = document.getElementById("pasteMap").value;
-    if (map == "") {
-        for (let step1 = 0; step1 < 30; step1++) {
-            for (let step2 = 0; step2 < 20; step2++) {
-                btnMap[step1][step2] = "b";
-            }}
-            map = btnMap;
-    }
+
     var request = new XMLHttpRequest();
     request.open("GET","maps/winMap.json", false);
     request.send(null);
@@ -476,8 +470,8 @@ function win() {
     var winMap = JSON.parse(request.responseText);
     document.getElementById("pasteMap").value = JSON.stringify(winMap);
     loadMap();
-    document.getElementById("pasteMap").value = map;
     console.log.sleep(2000, 'sleeeeep');
+    document.getElementById("pasteMap").value = map;
     loadMap();
 }
 
