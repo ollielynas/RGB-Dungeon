@@ -89,7 +89,8 @@ function loadMap() {
     document.getElementById("myfile").value = "";
   }
     btnMap = JSON.parse(document.getElementById("pasteMap").value);
-    setCookie("mapCoockie",btnMap,30);
+    setCookie("mapCookie",JSON.stringify(btnMap),30);
+    console.log(getCookie("mapCookie"));
 
   for (let step1 = 0; step1 < 30; step1++) {
     for (let step2 = 0; step2 < 20; step2++) {
@@ -494,9 +495,10 @@ function getCookie(name) {
       while (c.charAt(0)==' ') c = c.substring(1,c.length);
       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
   }
+  console.log("no cookie :(");
   return null;
 }
 
 
-document.getElementById("pasteMap").value=getCookie("mapCoockie");
-console.log(getCookie("mapCoockie"));
+document.getElementById("pasteMap").value=getCookie("mapCookie");
+loadMap();
