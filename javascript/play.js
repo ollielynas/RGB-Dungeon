@@ -316,7 +316,7 @@ document.addEventListener(
 function update() {
   for (let step1 = 0; step1 < 30; step1++) {
     for (let step2 = 0; step2 < 20; step2++) {
-      if (btnMap[step1][step2] == "b") {
+      if (btnMap[step1][step2] == "b" || btnMap[step1][step2] == "grw") {
       } else {
         //console.log(greenButtons);
         try {
@@ -351,6 +351,7 @@ function update() {
             btnMap[step1][step2] = "rb-" + redButtons[step1 + "-" + step2][1];
             btnId.style.backgroundColor = "rgb(214, 65, 65)";
             btnId.innerHTML = redButtons[step1 + "-" + step2][1];
+            break
           }
         } catch (a) {}
         try {

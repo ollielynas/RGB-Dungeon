@@ -261,6 +261,16 @@ if (JSON.stringify(btnMap).length < getCookie("mapCookie").length) {
     loadMap();
 }
 
+function clearMap() {
+    console.log("clearing map")
+    var request = new XMLHttpRequest();
+    request.open("GET","maps/default.json", false);
+    request.send(null);
+    console.log(request.responseText);
+    btnMap = JSON.parse(request.responseText);
+    loadMap();
+}
+
 function loadMap() {
 for (let step1 = 0; step1 < 30; step1++) {
     for (let step2 = 0; step2 < 20; step2++) {
@@ -331,3 +341,5 @@ for (let step1 = 0; step1 < 30; step1++) {
     }
   }
 }
+
+

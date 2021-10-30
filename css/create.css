@@ -191,3 +191,9 @@
     left: 1vw;
     bottom: 8vh;
 }
+
+#clear {
+    position: absolute;
+    left: 1vw;
+    bottom: 11vh;
+}
