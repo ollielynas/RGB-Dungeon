@@ -58,12 +58,11 @@ for (let step1 = 0; step1 < 30; step1++) {
     }
     btnMap[step1] = list;
 }
-console.log(btnMap)
 
 
 window.onmousedown = e => {
+    
     var btnId = (e.target.id);
-    console.log(btnId)
     var btnList = btnId.split("-")
     if (btnList[1] == 27 && btnList[2] == 9) {
         return
@@ -188,6 +187,7 @@ window.onmousedown = e => {
     }if (btnId == "bb"){
         tool = "bb";
     }
+    setCookie("mapCookie", JSON.stringify(btnMap), 30);
 }
 
 document.addEventListener('keydown', (event) => {
@@ -233,3 +233,101 @@ function download(text, name, type) {
         }
      }
 
+function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        console.log("no cookie :(");
+        return null;
+      }
+
+console.log(JSON.parse(getCookie("mapCookie")));
+if (JSON.stringify(btnMap).length < getCookie("mapCookie").length) {
+    btnMap = JSON.parse(getCookie("mapCookie"));
+    console.log(btnMap);
+    loadMap();
+}
+
+function loadMap() {
+for (let step1 = 0; step1 < 30; step1++) {
+    for (let step2 = 0; step2 < 20; step2++) {
+      if (step1 == 27 && step2 == 9) {
+      } else {
+        document.getElementById("square-" + step1 + "-" + step2).innerHTML = "";
+        if (btnMap[step1][step2] == "grw") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "Lightgrey";
+          btnId.style.border = "3px solid rgb(120,120,120)";
+          btnId.style.borderRadius = "10px";
+        } else if (btnMap[step1][step2] == "b") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "white";
+          btnId.style.border = "1px solid grey";
+          btnId.style.borderRadius = "0px";
+          btnId.style.transform = "scale(1)";
+        } else if (btnMap[step1][step2] == "grg") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "Lightgrey";
+          btnId.style.border = "3px solid rgb(120,120,120)";
+          btnId.style.borderRadius = "10px";
+          btnId.style.transform = "scale(0.5)";
+        } else if (btnMap[step1][step2].split("-")[0] == "rb") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "rgb(214, 65, 65)";
+          btnId.style.border = "3px solid darkred";
+          btnId.style.borderRadius = "50%";
+          btnId.style.transform = "scale(1)";
+          btnId.innerHTML = btnMap[step1][step2].split("-")[1];
+
+        } else if (btnMap[step1][step2].split("-")[0] == "rg") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "rgb(214, 65, 65)";
+          btnId.style.border = "3px solid darkred";
+          btnId.style.borderRadius = "10px";
+          btnId.style.transform = "scale(1)";
+        } else if (btnMap[step1][step2].split("-")[0] == "gb") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "lightgreen";
+          btnId.style.border = "3px solid darkgreen";
+          btnId.style.borderRadius = "50%";
+          btnId.style.transform = "scale(1)";
+          btnId.innerHTML = btnMap[step1][step2].split("-")[1];
+
+        } else if (btnMap[step1][step2].split("-")[0] == "gg") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "lightgreen";
+          btnId.style.border = "3px solid darkgreen";
+          btnId.style.borderRadius = "10px";
+          btnId.style.transform = "scale(1)";
+        } else if (btnMap[step1][step2].split("-")[0] == "bb") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "lightblue";
+          btnId.style.border = "3px solid darkblue";
+          btnId.style.borderRadius = "50%";
+          btnId.style.transform = "scale(1)";
+          btnId.innerHTML = btnMap[step1][step2].split("-")[1];
+
+        } else if (btnMap[step1][step2].split("-")[0] == "bg") {
+          btnId = document.getElementById("square-" + step1 + "-" + step2);
+          btnId.style.backgroundColor = "lightblue";
+          btnId.style.border = "3px solid darkblue";
+          btnId.style.borderRadius = "10px";
+          btnId.style.transform = "scale(1)";
+        }
+      }
+    }
+  }
+}

@@ -164,7 +164,7 @@ function loadMap() {
           btnId.style.backgroundColor = "lightblue";
           btnId.style.border = "3px solid darkblue";
           btnId.style.borderRadius = "10px";
-          btnId.style.transform = "scale(1)";
+          btnId.style.transform = "scale(1)"; // when adding stuf dont forget to add the same stuff to the create.json file aswell
         }
       }
     }
